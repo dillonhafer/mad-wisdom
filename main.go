@@ -27,7 +27,20 @@ func LoadCredentials() (client *twittergo.Client, err error) {
 }
 
 func madTweet() string {
-	return "Be ancient with the earth."
+	url := fmt.Sprintf("http://162.243.18.36:4000/madbot")
+	response, err := http.Get(url)
+	defer response.Body.Close()
+	if err != nil {
+		fmt.Printf("Failed to get URL:\n%s", err)
+		os.Exit(1)
+	}
+
+	contents, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		fmt.Printf("%s", err)
+		os.Exit(1)
+	}
+	return string(contents)
 }
 
 func main() {
