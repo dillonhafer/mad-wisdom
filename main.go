@@ -86,14 +86,4 @@ func main() {
 		}
 		os.Exit(1)
 	}
-	fmt.Printf("ID:                   %v\n", tweet.Id())
-	fmt.Printf("Tweet:                %v\n", tweet.Text())
-	fmt.Printf("User:                 %v\n", tweet.User().Name())
-	if resp.HasRateLimit() {
-		fmt.Printf("Rate limit:           %v\n", resp.RateLimit())
-		fmt.Printf("Rate limit remaining: %v\n", resp.RateLimitRemaining())
-		fmt.Printf("Rate limit reset:     %v\n", resp.RateLimitReset())
-	} else {
-		fmt.Printf("Could not parse rate limit from response.\n")
-	}
 }
